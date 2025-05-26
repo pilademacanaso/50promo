@@ -19,7 +19,8 @@ def index():
         original_url = request.form['url']
         short_url = generate_short_url()
         url_mapping[short_url] = original_url
-        return f'Short URL: <a href="/{short_url}">/{short_url}</a>'
+        domain = request.host_url
+        return f'Short URL: <a href="{domain}{short_url}">{domain}{short_url}</a>
     return '''
         <form method="post">
             URL to shorten: <input type="text" name="url">

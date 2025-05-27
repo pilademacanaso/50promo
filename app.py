@@ -51,5 +51,8 @@ def redirect_to_url(short_url):
         return redirect(result[0])
     return 'URL not found', 404
 
+from waitress import serve
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(app, host='0.0.0.0', port=int(os.environ.get('PORT', 10000)))
+
